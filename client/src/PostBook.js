@@ -61,12 +61,12 @@ class PostBook extends Component {
      <div className="form-group">
         <label htmlFor="exampleFormControlSelect1">Category</label>
         <select className="form-control" id="exampleFormControlSelect1"  onChange={event => this.onCategoryChange(event)}>
-          <option value="5dfc9a4a7fa7b94c7419a0d2">Graphic design</option>
-          <option value="5dfb8fbd2893672cdc4054ec">Virtual reality</option>
+          <option value="5dfcb86050c64a00173afb6b">Graphic design</option>
+          <option value="5dfcb8bc50c64a00173afb6f">Programming</option>
+          <option value="5dfcb8c250c64a00173afb70">Virtual reality</option>
         </select>
       </div>
-      
-     
+
       <div>
         <button
                     type="submit"

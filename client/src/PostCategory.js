@@ -22,13 +22,13 @@ class PostCategory extends Component {
   //Method to make the button working
   onClick(event) {
     event.preventDefault();
-    this.props.postCategory(this.state.input); // Add the question to the state of questions in App.js
+    this.props.postCategory(this.state.input); // Add the category to the state ofcategories in App.js
     
   }
 
   render() {
     return (
-      <div className="card askQuestion col-lg-8">
+      <div className="card col-lg-8">
         <div className="card-body">
           <form>
             <div className="form-row align-items-center">

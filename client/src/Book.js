@@ -7,20 +7,15 @@ class Book extends Component {
     super(props);
   }
 
+  //Component for displaying the bookId 
   render() {
-    console.log(listBook);
     let listBook = "";
-
     const category = this.props.getCategory(this.props.id);
  
-    
-    if (category) {
-      
+    if (category) { 
       if (category.books) {
-      
         listBook = category.books.map((book) => (
           <div key={book._id} id={book._id} className="list-group container">
-           
            <div className="">
               <div className="col-lg-4 bg-light">
               <h1>Title: {book.title} </h1>
@@ -29,12 +24,9 @@ class Book extends Component {
                    <li>Seller: {book.sellerName}</li>
                    <li>Category: {book.category}</li>
                    <li>Price: {book.price}</li>
-               </ul>
-   
-                
+               </ul>  
               </div>
               </div>
-           
           </div>
         ));
       }
@@ -43,19 +35,12 @@ class Book extends Component {
 
 
     return (
-      <div className="m-5">
-       
+      <div className="m-5"> 
         <div>
           <h3>Book details</h3>
-          <div className="row list-group-horizontal-md mb-3">
-           
-            {listBook.length === 0 ? <p>No Book found!</p> : listBook
-           
-            }
-            
-          </div>
-
-         
+          <div className="row list-group-horizontal-md mb-3">       
+            {listBook.length === 0 ? <p>No Book found!</p> : listBook}
+          </div> 
         </div>
         <div className="mt-5">
           <Link to="/">

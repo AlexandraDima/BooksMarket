@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
 import PostCategory from "./PostCategory";
 
 class Admin extends Component {
+  //Component for admin user
   constructor(props) {
     super(props);
     this.deleteCategory = this.deleteCategory.bind(this);
   }
 
  deleteCategory(event) {
- // let id = event.currentTarget.dataset.id;
   this.props.deleteCategory(this.props.id);
   }
   render() {

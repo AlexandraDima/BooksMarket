@@ -28,14 +28,14 @@ class Nav extends Component {
   };
  }
 
- async logout(event) {
-   event.preventDefault();
-   this.Auth.logout();
-   await this.setState({
-     userCredentials: {},
-     questions: []
-   });
-  }
+  async logout(event) {
+    event.preventDefault();
+    this.Auth.logout();
+    await this.setState({
+      userCredentials: {},
+      categories: []
+    });
+    }
 
   render() {
     console.log(this.state.userCredentials.username );
@@ -58,15 +58,18 @@ class Nav extends Component {
 
         <div className="collapse navbar-collapse">
           <div className="navbar-nav mr-auto">
-            
-
+            {/*If statement for displaying different button links based on the loggedIn user 
+            If the username is admin - the button will lead him to the admin area to add or remove categories
+            If the username is client - the button will lead him to the client area to post a new book
+            Else, if the user is not logged in, none of the buttons will be displayed
+            */}
             {(this.Auth.getUsername() === "admin")  ? 
             <Link className="nav-item nav-link active btn btn-info mb-1" to="/admin">
               Admin
             </Link> : ((this.Auth.getUsername() === "client") ? <Link className="nav-item nav-link active btn btn-info mb-1" to="/postbook">
               Post book
             </Link> : "")
-}
+            }
           </div>
           
      
@@ -91,19 +94,7 @@ class Nav extends Component {
               />
             )}
           </div>
-          
-
-          {/* <form className="form-inline my-2 my-lg-0">
-            <input
-              className="form-control mr-sm-2"
-              type="text"
-              placeholder="Search"
-              aria-label="Search"
-            ></input>
-            <button className="btn btn-info my-2 my-sm-0" type="submit">
-              Search
-            </button>
-          </form> */}
+      
         </div>
       </nav>
     );

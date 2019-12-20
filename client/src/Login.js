@@ -27,47 +27,6 @@ class Login extends Component {
 
   render() {
     return (
-      /*
-      <div className="card col-lg-8 align-center m-5">
-        <div className="card-body">
-          <form className="form-signin">
-            <div className="form-label-group">
-              <input
-                onChange={event => this.handleChange(event)}
-                className="form-control"
-                placeholder="Username"
-              ></input>
-              <label>Username</label>
-            </div>
-
-            <div className="form-label-group">
-              <input
-                onChange={event => this.handleChange(event)}
-                className="form-control"
-                placeholder="Password"
-              ></input>
-              <label>Password</label>
-            </div>
-
-            <div className="custom-control custom-checkbox mb-3">
-              <input
-                type="checkbox"
-                className="custom-control-input"
-                id="customCheck1"
-              ></input>
-              <label className="custom-control-label">Remember password</label>
-            </div>
-            <button
-              onClick={event => this.handleLogin(event)}
-              className="btn btn-lg btn-primary btn-block text-uppercase"
-              type="submit"
-            >
-              Login
-            </button>
-          </form>
-        </div>
-      </div>
-      */
       <div>
         <input
           className="m-1"

@@ -2,14 +2,21 @@ module.exports = (users, secret) => {
   let express = require("express");
   let router = express.Router();
 
+  //JSON Web Token used for encapsulating a user's identity - it's like a password, but temporary
+  //JWTs are not visible for end-users, they only know they are logged in to a website
   const jwt = require("jsonwebtoken");
+  
+  //Bcrypt is the library that help us hashing the passwords, that it's using salting mechanism to improve security
+  //Salt is just a random value added to normal password 
   const bcrypt = require("bcryptjs");
 
+  //Post user credentials
   router.post("/", (req, res) => {
     // TODO: Implement user account creation
     res.status(501).json({ msg: "POST new user not implemented" });
   });
 
+  //Update user's credentials
   router.put("/", (req, res) => {
     // TODO: Implement user update (change password, etc).
     res.status(501).json({ msg: "PUT update user not implemented" });

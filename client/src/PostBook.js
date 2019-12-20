@@ -3,36 +3,47 @@ import React, { Component } from "react";
 class PostBook extends Component {
   constructor(props) {
     super(props); // This line is calling the constructor in the super class.
-
-  this.state = {
-  
-      title: "", 
-      price: ""
     
-  
-  };
+    //Initializing the state that contains the category and the book object
+    //I have only added only the title field, to test if the methods will work
+    this.state = {
+        category: "",
+        book: {
+          title:""
+        }
+    };
+    this.onTitleChange = this.onTitleChange.bind(this);
+    this.onCategoryChange = this.onCategoryChange.bind(this);
+    this.onClick = this.onClick.bind(this);
   
   }
- 
-  ///Method used for the input
-  onChange(event) {
+  
+  //Method that is called each time the category is selected 
+   onCategoryChange(event) {
+      console.log("change category", event.target.value);
+      this.setState({
+        ...this.state,
+        category: event.target.value
+      })
+   }
+
+   //Method that is called each time the title is added as an input
+   onTitleChange(event) {
+    this.setState({
+      book: {
+        ...this.state.book,
+        title: event.target.value
+        
+      } 
+    })
+     console.log("change title", event.target.value);
+   }
    
-   this.setState({
-    [event.target.name] : event.target.value
 
-  });
-
-
-  }
-
-  //Method to make the button working
+  //Method to save all data to the server that is calling the postBook method with category and book parameters
   onClick(event) {
-  
-   // const category = this.props.getCategory(this.props.id);
     event.preventDefault();
-
-    this.props.postBook(this.props.categoryId, this.state.title); 
-    console.log(this.props.postBook);
+    this.props.postBook(this.state.category, this.state.book); 
     
   }
 
@@ -43,36 +54,28 @@ class PostBook extends Component {
       <form  onClick={event => this.onClick(event)}>
       <div className="form-group">
         <label htmlFor="exampleFormControlInput1">Title</label>
-        <input type="email" className="form-control" id="exampleFormControlInput1"  onChange={event => this.onChange(event)}  name="title"  placeholder="Enter book title"></input>
+        <input className="form-control" id="exampleFormControlInput1" value={this.state.book.title} onChange={event => this.onTitleChange(event)} placeholder="Enter book title"></input>
       </div>
 
-      <div className="form-group">
-        <label htmlFor="exampleFormControlInput1">Price</label>
-        <input type="email" className="form-control" id="exampleFormControlInput1"  onChange={event => this.onChange(event)} name="price" placeholder="Enter book price"></input>
-      </div>
-
-{/*
- <div className="form-group">
+      {/*I should find a way to get the categoryId dynamically, instead of manually typing the categoryId value  */}
+     <div className="form-group">
         <label htmlFor="exampleFormControlSelect1">Category</label>
-        <select className="form-control" id="exampleFormControlSelect1"  onChange={event => this.onChange(event)}>
-          <option value="programming">programming</option>
-          <option value="Graphic design">Graphic design</option>
-          <option value="Virtual reality">Virtual reality</option>
+        <select className="form-control" id="exampleFormControlSelect1"  onChange={event => this.onCategoryChange(event)}>
+          <option value="5dfc9a4a7fa7b94c7419a0d2">Graphic design</option>
+          <option value="5dfb8fbd2893672cdc4054ec">Virtual reality</option>
         </select>
       </div>
       
-*/}
-    
      
-    <div>
-       <button
-                  type="submit"
-                  className="btn btn-info mb-2"
-                  onClick={event => this.onClick(event)}
-                >
-                 Post book
-                </button>
-    </div>
+      <div>
+        <button
+                    type="submit"
+                    className="btn btn-info mb-2"
+                    onClick={event => this.onClick(event)}
+                  >
+                  Post book
+                  </button>
+      </div>
 </form>
 
 

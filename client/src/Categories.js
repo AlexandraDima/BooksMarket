@@ -3,14 +3,14 @@ import { Link } from "@reach/router";
 
 
 class Categories extends Component {
-  render() {
-    
+    //Component for displaying the list of categories
 
+  render() {
     let contentCategories;
     if (this.props.categories) {
-      console.log("i am going to render again");
       contentCategories = this.props.categories.map(category => (
         <div key={category._id} className="card bg-cards text-center p-3">
+          <i className="fa fa-list fa-2x" aria-hidden="true"></i>
           <h3 className="card-title">
             <Link to={`/category/${category._id}`}>{category.category}</Link>
           </h3>

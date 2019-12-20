@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import PostBook from "./PostBook";
 
 class Category extends Component {
   constructor(props) {
     super(props);
- 
   }
 
+  //Component for displaying the books for a specific CategoryId
   render() {
     let title = " ";
     let listBooks = "";
@@ -16,16 +15,12 @@ class Category extends Component {
       title = category.category;
       if (category.books) {
         listBooks = category.books.map((book, id) => (
-          <div key={book._id} id={book._id} className="list-group container">
-           
-           <div className="">
-              <div className="col-lg-4 bg-light">
-
-              <h1><Link to={`/books/${book._id}`}>{book.title}</Link></h1>
-              
-                
-                
-              </div>
+          <div key={book._id} id={book._id} className="card bg-cards text-center">
+           <div className="card-title">
+              <i className="fa fa-book fa-4x" aria-hidden="true"></i>  
+                <h3><Link to={`/books/${book._id}`}>{book.title}</Link></h3>
+                <p>Author: {book.author}</p>
+                <p>Price: {book.price}</p>
               </div>
            
           </div>
@@ -35,12 +30,12 @@ class Category extends Component {
     return (
       <div className="m-5">
         <div className="question card bg-cards text-center p-3 col-lg-4">
-          <h2>Category</h2>
+          <h1>Category</h1>
           <h4 className="card-title"> {title}</h4>
         </div>
-        <div>
-          <h3>Books</h3>
-          <div className="row list-group-horizontal-md mb-3">
+        <div className="m-5 text-center">
+          <h3 className="m-5">Books we have in stock for {title} category</h3>
+          <div className="card-columns mb-3">
             {listBooks.length === 0 ? <p>No Books!</p> : listBooks}
           </div>
 
